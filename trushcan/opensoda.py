@@ -1,5 +1,6 @@
 import json
 import requests
+import re
 
 # fetch data with GitHub REST API
 # support not only a single API
@@ -7,7 +8,7 @@ class getInfo():
     host:str
     owner:str
     repo:str
-    page_tota:int
+    page_total:int
     page_now:int
 
     def __init__(self, url:str, owner:str, repo:str) -> None:
@@ -21,7 +22,10 @@ class getInfo():
     def get_pages(self, links:dict) -> None:
         next_dict = links["next"]
         last_dict = links["last"]
-        last_dict["url"]
+        
+        page_total = re.search("/\?.*/g", last_dict["url"], flags=0)
+        print(page_total)
+        
         return
 
     def get_repo_stargazers(self) -> dict:
