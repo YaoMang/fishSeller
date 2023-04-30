@@ -1,6 +1,7 @@
 import os
 import json
 
+
 # def list_dir(file_dir):
 #   '''
 #     通过 listdir 得到的是仅当前路径下的文件名，不包括子目录中的文件，如果需要得到所有文件需要递归
@@ -20,16 +21,23 @@ import json
 def read_json(project_path,json_file:str)     :
     for project in project_path:
         jsonfile=open(project+"/"+json_file)
-        
+
     # json_dict:dict=json.loads(jsonfile.read())    
     # print(json_dict)
 
-file_dir="./top_300_metrics"
-dir_list=os.listdir(file_dir)
-project_path=[]
-for cur_file in dir_list:
-    user=os.listdir(os.path.join(file_dir,cur_file))
-    for repository in user:
-        project_path.append(os.path.join(file_dir,cur_file)+'/'+repository)
 
-read_json(project_path,"activity.json")
+if __name__=="__main__":
+    file_dir="./top_300_metrics"
+    dir_list=os.listdir(file_dir)
+    project_path=[]
+    for cur_file in dir_list:
+        user=os.listdir(os.path.join(file_dir,cur_file))
+        for repository in user:
+            project_path.append(os.path.join(file_dir,cur_file)+'/'+repository)
+
+    read_json(project_path,"issue_comments.json")
+    read_json(project_path,"issue_new.json")
+    read_json(project_path,"change_requests.json")
+    read_json(project_path,"change_requests_reviews.json")
+    read_json(project_path,"change_requests_accepted.json")
+    read_json(project_path,"technical_fork.json")
