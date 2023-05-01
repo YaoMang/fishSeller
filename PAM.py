@@ -83,6 +83,7 @@ class timeByMonth():
         self.month = month
 
     def __str__(self) -> str:
+        # format convert to YYYY-MM
         ret:str = "%04d" % self.year
         ret += '-'
         ret += "%02d" % self.month
