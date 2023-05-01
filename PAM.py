@@ -70,6 +70,8 @@ class PAM():
         while str(time) != end:
             time += time_t
             self.time_period.append(str(time))
+        
+        print(self.time_period)
 
 # time calss, has YYYY-MM records
 class timeByMonth():
@@ -81,9 +83,9 @@ class timeByMonth():
         self.month = month
 
     def __str__(self) -> str:
-        ret:str = str(self.year).format("%04d")
+        ret:str = "%04d" % self.year
         ret += '-'
-        ret += str(self.month).format("%02d")
+        ret += "%02d" % self.month
 
         return ret
 
@@ -98,8 +100,5 @@ class timeByMonth():
 
     def timeInit_strTime(self, strTime:str) -> None:
         self.year = int(strTime[0:4])
-        self.month = int(strTime[5:])
+        self.month = int(strTime[6:])
         return
-
-pam = PAM(3,3,3,3,3,3,3)
-pam.setTimeSlice(["1998-02", "2020-12"])
