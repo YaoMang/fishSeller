@@ -33,3 +33,4 @@ for cur_file in dir_list:
         project_path.append(os.path.join(file_dir,cur_file)+'/'+repository)
 
 read_json(project_path,"activity.json")
+
